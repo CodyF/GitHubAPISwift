@@ -1,22 +1,13 @@
 //
-//  UserModel.swift
+//  UserInfoModel.swift
 //  CodyFTMobileAssign
 //
-//  Created by Consultant on 4/14/20.
+//  Created by Consultant on 4/15/20.
 //  Copyright © 2020 consultant. All rights reserved.
 //
 
 import Foundation
 
-struct usersReponse: Codable {
-    let items: [Users]
-}
-
-struct Users: Codable {
-    let url: URL
-
-}
-//MARK: Should I put these in a seperate file?
 struct UserInfo: Codable{
     let login: String
     let avatarURL: URL

@@ -13,13 +13,15 @@ class UserTableCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var repoLabel: UILabel!
     
-    var user: UserInfo! {
+    var viewModel: UserInfoViewModel! {
         didSet {
-            user.avatarURL.downloadImage { [weak self] result in
+            DispatchQueue.main.async {
+                self.viewModel.avatarURL.downloadImage { [weak self] result in
                 self?.avatarImage.image = result
             }
-            usernameLabel.text = user.login
-            repoLabel.text = "Repos: \(user.publicRepos)"
+                self.usernameLabel.text = self.viewModel.username
+                self.repoLabel.text = "Repos: \(self.viewModel.repoCount)"
+            }
         }
     }
 }

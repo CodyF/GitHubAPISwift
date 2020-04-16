@@ -8,40 +8,50 @@
 
 import Foundation
 
-//MARK: This View Model is for setting up the users view controller
-protocol usersDelegate: class {
-    func reload()
-}
-protocol usersProtocol {
+
+protocol UsersProtocol {
     var navigationTitle: String { get }
-    var delegate: usersDelegate? { get set }
 }
 
-class usersViewModel: usersProtocol {
-    var service: userService!
-    weak var delegate: usersDelegate?
-    var users = [UserInfo]() {
+class usersViewModel: UsersProtocol {
+    var userService: UserService
+    var userInfoService: UserInfoService
+    var updateClosure: (() -> Void)?
+    var user = [User]() {
         didSet {
-            self.delegate?.reload()
+            self.updateClosure?()
         }
     }
     var navigationTitle: String {
         return "GitHub Searcher"
     }
-    init(service: userService = UsersSearch()) {
-        self.service = service
+    init(userService: UserService = UsersSearch(), userInfoService: UserInfoService = UserInfoSearch()) {
+        self.userService = userService
+        self.userInfoService = userInfoService
     }
     func numberOfRows() -> Int {
-        return users.count
+        return user.count
     }
 
     func getUsers(_ term: String) {
-        service.getUsers(term) { [weak self] (result) in
+        userService.getUsers(term) { [weak self] (result) in
             switch result {
-            case .success(let Users):
-                let userData = Users
-                self?.users = userData
+            case .success(let users):
+                let userData = users
+                self?.user = userData
             case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    func infoViewModel(for index: Int, completion: @escaping (UserInfoViewModel?) -> Void) {
+        userInfoService.getUserInfo(user[index].url) { result in
+            switch result {
+            case .success(let userInfo):
+                let userInfoViewModel = UserInfoViewModel(userInfo)
+                completion(userInfoViewModel)
+            case .failure(let error):
+                completion(nil)
                 print(error)
             }
         }

@@ -25,9 +25,12 @@ class UsersViewController: UIViewController {
     func setupUsers() {
         
         self.title = viewModel.navigationTitle
-        viewModel.delegate = self
+        viewModel.updateClosure = { [weak self] in
+            DispatchQueue.main.async {
+                self?.userTableView.reloadData()
+            }
+        }
         searchController.searchBar.delegate = self
-        //searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Users"
         navigationItem.searchController = searchController
@@ -37,8 +40,8 @@ class UsersViewController: UIViewController {
 extension UsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "UserInfoViewController") as! UserInfoViewController
-        let user = viewModel.users[indexPath.row]
-        vc.user = user
+        let viewModel = (tableView.cellForRow(at: indexPath) as? UserTableCell)?.viewModel
+        vc.userInfoViewModel = viewModel
         navigationController?.pushViewController(vc, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -53,33 +56,21 @@ extension UsersViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableCell", for: indexPath) as! UserTableCell
-        cell.user = viewModel.users[indexPath.row]
+        viewModel.infoViewModel(for: indexPath.row) { result in
+            cell.viewModel = result
+        }
         return cell
     }
     
     
 }
 
-extension UsersViewController: usersDelegate {
-    func reload() {
-        DispatchQueue.main.async {
-            self.userTableView.reloadData()
-        }
-    }
-}
 extension UsersViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let search = searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
-        viewModel.getUsers(search)
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] _ in
+            guard let search = searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
+            self?.viewModel.getUsers(search)
+        })
     }
 }
-//extension UsersViewController: UISearchResultsUpdating {
-//    func updateSearchResults(for searchController: UISearchController) {
-//        timer?.invalidate()
-//        let searchBar = searchController.searchBar
-//        let timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { [weak self] (timer) in
-//            self?.viewModel.getUsers(searchBar.text!)
-//        }
-//
-//    }
-//}

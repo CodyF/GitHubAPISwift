@@ -162,13 +162,21 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Biography" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZz-Io-3RB">
-                                <rect key="frame" x="15" y="170" width="345" height="20.5"/>
+                                <rect key="frame" x="15" y="170" width="345" height="141"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <searchBar contentMode="redraw" id="HHX-AB-xNz">
+                                <rect key="frame" x="0.0" y="311" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="LME-M7-hBj" id="rmO-n2-d1Y"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TeG-Uq-ci2">
-                                <rect key="frame" x="0.0" y="190.5" width="375" height="476.5"/>
+                                <rect key="frame" x="0.0" y="355" width="375" height="312"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepoTableCell" rowHeight="75" id="G6F-rC-32c" customClass="RepoTableCell" customModule="CodyFTMobileAssign" customModuleProvider="target">
@@ -231,16 +239,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="mZz-Io-3RB" firstAttribute="top" secondItem="NsJ-zc-YwB" secondAttribute="bottom" constant="10" id="1q8-WJ-8pz"/>
+                            <constraint firstItem="HHX-AB-xNz" firstAttribute="trailing" secondItem="TeG-Uq-ci2" secondAttribute="trailing" id="3Bp-TD-N63"/>
                             <constraint firstItem="1Qr-X3-XgI" firstAttribute="bottom" secondItem="TeG-Uq-ci2" secondAttribute="bottom" id="4dE-TO-oq1"/>
                             <constraint firstItem="NsJ-zc-YwB" firstAttribute="leading" secondItem="EnE-YN-S0r" secondAttribute="trailing" constant="15" id="5kf-Ae-4z6"/>
                             <constraint firstItem="mZz-Io-3RB" firstAttribute="leading" secondItem="1Qr-X3-XgI" secondAttribute="leading" constant="15" id="8eX-ia-KFg"/>
                             <constraint firstItem="EnE-YN-S0r" firstAttribute="leading" secondItem="1Qr-X3-XgI" secondAttribute="leading" constant="10" id="FO7-yL-XpQ"/>
+                            <constraint firstItem="HHX-AB-xNz" firstAttribute="leading" secondItem="TeG-Uq-ci2" secondAttribute="leading" id="JDu-g9-RPh"/>
                             <constraint firstItem="NsJ-zc-YwB" firstAttribute="top" secondItem="1Qr-X3-XgI" secondAttribute="top" constant="10" id="MyG-MJ-obN"/>
                             <constraint firstItem="TeG-Uq-ci2" firstAttribute="leading" secondItem="1Qr-X3-XgI" secondAttribute="leading" id="TgK-kn-tpP"/>
                             <constraint firstItem="1Qr-X3-XgI" firstAttribute="trailing" secondItem="mZz-Io-3RB" secondAttribute="trailing" constant="15" id="Z50-C8-gJU"/>
-                            <constraint firstItem="TeG-Uq-ci2" firstAttribute="top" secondItem="mZz-Io-3RB" secondAttribute="bottom" id="eYV-UT-2Kh"/>
+                            <constraint firstItem="HHX-AB-xNz" firstAttribute="top" secondItem="mZz-Io-3RB" secondAttribute="bottom" id="eRy-NR-P08"/>
                             <constraint firstItem="1Qr-X3-XgI" firstAttribute="trailing" secondItem="TeG-Uq-ci2" secondAttribute="trailing" id="ewl-Hf-ayG"/>
                             <constraint firstItem="1Qr-X3-XgI" firstAttribute="trailing" secondItem="NsJ-zc-YwB" secondAttribute="trailing" constant="15" id="fy1-rE-v6n"/>
+                            <constraint firstItem="TeG-Uq-ci2" firstAttribute="top" secondItem="HHX-AB-xNz" secondAttribute="bottom" id="h6k-Iy-3P3"/>
                             <constraint firstItem="mZz-Io-3RB" firstAttribute="top" secondItem="EnE-YN-S0r" secondAttribute="bottom" constant="10" id="kgZ-8g-1Fs"/>
                             <constraint firstItem="EnE-YN-S0r" firstAttribute="top" secondItem="1Qr-X3-XgI" secondAttribute="top" constant="10" id="pbL-mJ-71o"/>
                         </constraints>

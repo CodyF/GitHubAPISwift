@@ -20,29 +20,32 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var repoTableView: UITableView!
     
-    var user: UserInfo!
+    
+    var userInfoViewModel: UserInfoViewModel!
     var repoViewModel = RepoViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUsers()
     }
 
     func setupUsers() {
         self.title = "GitHub Searcher"
-        user.avatarURL.downloadImage { [weak self] (result) in
+        userInfoViewModel.avatarURL.downloadImage { [weak self] (result) in
             self?.avatarImage.image = result
         }
-        usernameLabel.text = user.login
-        emailLabel.text = user.email ?? "No Email Available"
-        locationLabel.text = user.location ?? "No Location Available"
-        let dateFormatter = ISO8601DateFormatter()
-        let readableDate = dateFormatter.date(from: user.createdAt)
-        dateFormatter.formatOptions = .withDashSeparatorInDate
-        joinDateLabel.text = dateFormatter.string(from: readableDate!)
-        followersLabel.text = "\(user.followers) Followers"
-        followingLabel.text = "Following\(user.following)"
-        bioLabel.text = user.bio ?? "No Bio Available"
-        repoViewModel.delegate = self
-        repoViewModel.getRepos(user.reposURL)
+        usernameLabel.text = userInfoViewModel.username
+        emailLabel.text = userInfoViewModel.email ?? "No Email Available"
+        locationLabel.text = userInfoViewModel.location ?? "No Location Available"
+        joinDateLabel.text = userInfoViewModel.date
+        followersLabel.text = "\(userInfoViewModel.followers) Followers"
+        followingLabel.text = "Following\(userInfoViewModel.following)"
+        bioLabel.text = userInfoViewModel.bio ?? "No Bio Available"
+        repoViewModel.updateClosure = { [weak self] in
+                DispatchQueue.main.async {
+                self?.repoTableView.reloadData()
+            }
+        }
+        repoViewModel.getRepos(userInfoViewModel.reposURL)
     }
 }
 
@@ -50,7 +53,7 @@ extension UserInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let config = SFSafariViewController.Configuration()
         config.entersReaderIfAvailable = true
-        let SafariVC = SFSafariViewController(url: repoViewModel.repos[indexPath.row].url)
+        let SafariVC = SFSafariViewController(url: repoViewModel.getURL(indexPath.row))
         navigationController?.pushViewController(SafariVC, animated: true)
         
     }
@@ -58,18 +61,20 @@ extension UserInfoViewController: UITableViewDelegate {
 
 extension UserInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repoViewModel.repos.count
+        return repoViewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RepoTableCell", for: indexPath) as! RepoTableCell
-        cell.repos = repoViewModel.repos[indexPath.row]
+        cell.repoLabel.text = repoViewModel.repoName(indexPath.row)
+        cell.forkLabel.text = "\(repoViewModel.numberOfForks(indexPath.row)) Forks"
+        cell.starLabel.text = "\(repoViewModel.numberOfStars(indexPath.row)) Stars"
         return cell
     }
 }
 
-extension UserInfoViewController: RepoDelegate{
-    func reload() {
-        self.repoTableView.reloadData()
+extension UserInfoViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        repoViewModel.filterReposBySearch(searchText)
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct repoModel: Codable {
+struct Repo: Codable {
     let name: String
     let url: URL
     let stars: Int

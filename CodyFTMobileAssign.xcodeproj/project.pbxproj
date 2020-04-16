@@ -13,13 +13,18 @@
 		020EC2E4244634F600E5A33C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 020EC2E2244634F600E5A33C /* Main.storyboard */; };
 		020EC2E6244634F800E5A33C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 020EC2E5244634F800E5A33C /* Assets.xcassets */; };
 		020EC2E9244634F800E5A33C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 020EC2E7244634F800E5A33C /* LaunchScreen.storyboard */; };
-		020EC2F12446359D00E5A33C /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020EC2F02446359D00E5A33C /* UserInfoViewController.swift */; };
-		020EC2F32446362B00E5A33C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020EC2F22446362B00E5A33C /* UserModel.swift */; };
-		020EC2F52446363B00E5A33C /* RepositoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020EC2F42446363B00E5A33C /* RepositoryModel.swift */; };
+		020EC2F12446359D00E5A33C /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020EC2F02446359D00E5A33C /* RepoViewController.swift */; };
+		020EC2F32446362B00E5A33C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020EC2F22446362B00E5A33C /* User.swift */; };
+		020EC2F52446363B00E5A33C /* Repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020EC2F42446363B00E5A33C /* Repo.swift */; };
 		020EC2F72446374A00E5A33C /* GitAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020EC2F62446374A00E5A33C /* GitAPI.swift */; };
-		020EC2F92446376200E5A33C /* GitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020EC2F82446376200E5A33C /* GitService.swift */; };
+		020EC2F92446376200E5A33C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020EC2F82446376200E5A33C /* UserService.swift */; };
+		0243F2E82447C333008274BA /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0243F2E72447C333008274BA /* Users.swift */; };
+		0243F2EA2447C34C008274BA /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0243F2E92447C34C008274BA /* UserInfo.swift */; };
+		0243F2EC2447C531008274BA /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0243F2EB2447C531008274BA /* UserInfoService.swift */; };
+		0243F2EE2447C53C008274BA /* RepoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0243F2ED2447C53C008274BA /* RepoService.swift */; };
+		0243F2F02447C7F1008274BA /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0243F2EF2447C7F1008274BA /* UserInfoViewModel.swift */; };
 		02E4E62E2447002900218E2F /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4E62D2447002900218E2F /* UsersViewModel.swift */; };
-		02E4E6312447004200218E2F /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4E6302447004200218E2F /* UserInfoViewModel.swift */; };
+		02E4E6312447004200218E2F /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4E6302447004200218E2F /* RepoViewModel.swift */; };
 		02E4E6332447058600218E2F /* UserTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4E6322447058600218E2F /* UserTableCell.swift */; };
 		02E4E63524471B6B00218E2F /* RepoTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4E63424471B6B00218E2F /* RepoTableCell.swift */; };
 		02E4E63824476B0D00218E2F /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E4E63724476B0D00218E2F /* URL+Extension.swift */; };
@@ -34,13 +39,18 @@
 		020EC2E5244634F800E5A33C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		020EC2E8244634F800E5A33C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		020EC2EA244634F800E5A33C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		020EC2F02446359D00E5A33C /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
-		020EC2F22446362B00E5A33C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		020EC2F42446363B00E5A33C /* RepositoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryModel.swift; sourceTree = "<group>"; };
+		020EC2F02446359D00E5A33C /* RepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
+		020EC2F22446362B00E5A33C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		020EC2F42446363B00E5A33C /* Repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repo.swift; sourceTree = "<group>"; };
 		020EC2F62446374A00E5A33C /* GitAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitAPI.swift; sourceTree = "<group>"; };
-		020EC2F82446376200E5A33C /* GitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitService.swift; sourceTree = "<group>"; };
+		020EC2F82446376200E5A33C /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		0243F2E72447C333008274BA /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		0243F2E92447C34C008274BA /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		0243F2EB2447C531008274BA /* UserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
+		0243F2ED2447C53C008274BA /* RepoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoService.swift; sourceTree = "<group>"; };
+		0243F2EF2447C7F1008274BA /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		02E4E62D2447002900218E2F /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
-		02E4E6302447004200218E2F /* UserInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
+		02E4E6302447004200218E2F /* RepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
 		02E4E6322447058600218E2F /* UserTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableCell.swift; sourceTree = "<group>"; };
 		02E4E63424471B6B00218E2F /* RepoTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableCell.swift; sourceTree = "<group>"; };
 		02E4E63724476B0D00218E2F /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
@@ -92,7 +102,9 @@
 		020EC2FA244639E500E5A33C /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				020EC2F82446376200E5A33C /* GitService.swift */,
+				020EC2F82446376200E5A33C /* UserService.swift */,
+				0243F2EB2447C531008274BA /* UserInfoService.swift */,
+				0243F2ED2447C53C008274BA /* RepoService.swift */,
 				020EC2F62446374A00E5A33C /* GitAPI.swift */,
 			);
 			path = Service;
@@ -111,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				020EC2E0244634F600E5A33C /* UsersViewController.swift */,
-				020EC2F02446359D00E5A33C /* UserInfoViewController.swift */,
+				020EC2F02446359D00E5A33C /* RepoViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -119,8 +131,10 @@
 		020EC2FD24463A0000E5A33C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				020EC2F22446362B00E5A33C /* UserModel.swift */,
-				020EC2F42446363B00E5A33C /* RepositoryModel.swift */,
+				0243F2E72447C333008274BA /* Users.swift */,
+				020EC2F22446362B00E5A33C /* User.swift */,
+				0243F2E92447C34C008274BA /* UserInfo.swift */,
+				020EC2F42446363B00E5A33C /* Repo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -148,7 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				02E4E62D2447002900218E2F /* UsersViewModel.swift */,
-				02E4E6302447004200218E2F /* UserInfoViewModel.swift */,
+				0243F2EF2447C7F1008274BA /* UserInfoViewModel.swift */,
+				02E4E6302447004200218E2F /* RepoViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -234,17 +249,22 @@
 			files = (
 				020EC2E1244634F600E5A33C /* UsersViewController.swift in Sources */,
 				020EC2F72446374A00E5A33C /* GitAPI.swift in Sources */,
-				020EC2F12446359D00E5A33C /* UserInfoViewController.swift in Sources */,
-				02E4E6312447004200218E2F /* UserInfoViewModel.swift in Sources */,
+				020EC2F12446359D00E5A33C /* RepoViewController.swift in Sources */,
+				02E4E6312447004200218E2F /* RepoViewModel.swift in Sources */,
 				02E4E63524471B6B00218E2F /* RepoTableCell.swift in Sources */,
 				020EC2DD244634F600E5A33C /* AppDelegate.swift in Sources */,
-				020EC2F52446363B00E5A33C /* RepositoryModel.swift in Sources */,
+				020EC2F52446363B00E5A33C /* Repo.swift in Sources */,
 				02E4E6332447058600218E2F /* UserTableCell.swift in Sources */,
 				02E4E63824476B0D00218E2F /* URL+Extension.swift in Sources */,
-				020EC2F32446362B00E5A33C /* UserModel.swift in Sources */,
-				020EC2F92446376200E5A33C /* GitService.swift in Sources */,
+				0243F2EA2447C34C008274BA /* UserInfo.swift in Sources */,
+				020EC2F32446362B00E5A33C /* User.swift in Sources */,
+				0243F2F02447C7F1008274BA /* UserInfoViewModel.swift in Sources */,
+				020EC2F92446376200E5A33C /* UserService.swift in Sources */,
+				0243F2EC2447C531008274BA /* UserInfoService.swift in Sources */,
+				0243F2EE2447C53C008274BA /* RepoService.swift in Sources */,
 				020EC2DF244634F600E5A33C /* SceneDelegate.swift in Sources */,
 				02E4E62E2447002900218E2F /* UsersViewModel.swift in Sources */,
+				0243F2E82447C333008274BA /* Users.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

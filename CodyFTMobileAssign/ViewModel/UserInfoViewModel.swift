@@ -1,5 +1,5 @@
 //
-//  UserViewModel.swift
+//  UserInfoViewModel.swift
 //  CodyFTMobileAssign
 //
 //  Created by Consultant on 4/15/20.
@@ -8,31 +8,53 @@
 
 import Foundation
 
-protocol RepoDelegate: class {
-    func reload()
-}
-
-class RepoViewModel {
+class UserInfoViewModel {
+    lazy var dateFormatter: ISO8601DateFormatter = ISO8601DateFormatter()
+    private let userInfo: UserInfo
     
-    weak var delegate: RepoDelegate?
-    var service = UsersSearch()
-    var repos = [repoModel]() {
-        didSet {
-            self.delegate?.reload()
-        }
-    }
-    func numberOfRows() -> Int {
-        return repos.count
+    init(_ userInfo: UserInfo) {
+        self.userInfo = userInfo
     }
     
-    func getRepos(_ url: URL) {
-        service.getRepos(url) { [weak self] (result) in
-            switch result {
-            case .success(let reposData):
-                self?.repos = reposData
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+    var username: String {
+        return userInfo.login
+    }
+    
+    var avatarURL: URL {
+        return userInfo.avatarURL
+    }
+    
+    var reposURL: URL {
+        return userInfo.reposURL
+    }
+    
+    var repoCount: Int {
+        return userInfo.publicRepos
+    }
+    
+    var email: String? {
+        return userInfo.email
+    }
+    
+    var bio: String? {
+        return userInfo.bio
+    }
+    
+    var location: String? {
+        return userInfo.location
+    }
+    
+    var followers: Int {
+        return userInfo.followers
+    }
+    
+    var following: Int {
+        return userInfo.following
+    }
+    
+    var date: String? {
+        guard let readableDate = dateFormatter.date(from: userInfo.createdAt) else {return nil}
+        dateFormatter.formatOptions = .withDashSeparatorInDate
+        return dateFormatter.string(from: readableDate)
     }
 }
